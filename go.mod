@@ -1,6 +1,6 @@
 module go.einride.tech/xsens
 
-go 1.18
+go 1.23.8
 
 require (
 	github.com/golang/mock v1.6.0

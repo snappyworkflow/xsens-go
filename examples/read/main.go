@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"go.bug.st/serial"
-	"go.einride.tech/xsens"
+	"go.ff-ai.com/xsens"
 )
 
 // TODO: fix this

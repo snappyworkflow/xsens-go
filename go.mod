@@ -1,4 +1,4 @@
-module go.einride.tech/xsens
+module go.ff-ai.com/xsens
 
 go 1.18
 

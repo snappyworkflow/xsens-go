@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"go.einride.tech/xsens"
+	"go.ff-ai.com/xsens"
 	"gotest.tools/v3/assert"
 )
 

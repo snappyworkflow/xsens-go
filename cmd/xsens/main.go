@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"go.bug.st/serial"
-	"go.einride.tech/xsens"
+	"go.ff-ai.com/xsens"
 	"golang.org/x/sync/errgroup"
 )
 

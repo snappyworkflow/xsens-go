@@ -8,7 +8,7 @@ import (
 	"io"
 	"sync"
 
-	"go.einride.tech/xsens"
+	"go.ff-ai.com/xsens"
 )
 
 var (

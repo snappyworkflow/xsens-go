@@ -8,7 +8,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/snappyworkflow/xsens-go"
+	"go.ff-ai.com/xsens"
 )
 
 var (

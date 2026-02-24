@@ -1,7 +1,7 @@
 # Xsens Go
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/snappyworkflow/xsens-go)](https://pkg.go.dev/github.com/snappyworkflow/xsens-go)
-[![GoReportCard](https://goreportcard.com/badge/github.com/snappyworkflow/xsens-go)](https://goreportcard.com/report/github.com/snappyworkflow/xsens-go)
+[![PkgGoDev](https://pkg.go.dev/badge/go.ff-ai.com/xsens)](https://pkg.go.dev/go.ff-ai.com/xsens)
+[![GoReportCard](https://goreportcard.com/badge/go.ff-ai.com/xsens)](https://goreportcard.com/report/go.ff-ai.com/xsens)
 [![Codecov](https://codecov.io/gh/einride/xsens-go/branch/master/graph/badge.svg)](https://codecov.io/gh/einride/xsens-go)
 
 A Go client for [Xsens](https://xsens.com) IMU(s).
@@ -25,7 +25,7 @@ compatible with all products in the
 ## Usage
 
 ```bash
-$ go get -u github.com/snappyworkflow/xsens-go
+$ go get -u go.ff-ai.com/xsens
 ```
 
 ## Examples
@@ -42,7 +42,7 @@ import (
 	"os"
 
 	"go.bug.st/serial"
-	"github.com/snappyworkflow/xsens-go"
+	"go.ff-ai.com/xsens"
 )
 
 func main() {

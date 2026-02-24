@@ -12,9 +12,9 @@ import (
 	"time"
 
 	"github.com/golang/mock/gomock"
-	"github.com/snappyworkflow/xsens-go"
-	"github.com/snappyworkflow/xsens-go/mocks/mockserial"
-	"github.com/snappyworkflow/xsens-go/xsensemulator"
+	"go.ff-ai.com/xsens"
+	"go.ff-ai.com/xsens/mocks/mockserial"
+	"go.ff-ai.com/xsens/xsensemulator"
 	"golang.org/x/sync/errgroup"
 	"gotest.tools/v3/assert"
 )

@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/snappyworkflow/xsens-go"
 	"go.bug.st/serial"
+	"go.ff-ai.com/xsens"
 )
 
 // TODO: fix this

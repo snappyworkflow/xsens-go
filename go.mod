@@ -1,4 +1,4 @@
-module github.com/snappyworkflow/xsens-go
+module go.ff-ai.com/xsens
 
 go 1.18
 

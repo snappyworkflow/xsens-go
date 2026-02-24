@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/snappyworkflow/xsens-go"
 	"go.bug.st/serial"
-	"go.ff-ai.com/xsens"
 	"gotest.tools/v3/assert"
 )
 

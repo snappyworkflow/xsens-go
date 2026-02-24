@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"go.ff-ai.com/xsens"
+	"github.com/snappyworkflow/xsens-go"
 	"gotest.tools/v3/assert"
 	is "gotest.tools/v3/assert/cmp"
 )

@@ -103,6 +103,51 @@ func TestClient_GoToMeasurement(t *testing.T) {
 	assert.NilError(t, client.GoToMeasurement(ctx))
 }
 
+func TestClient_ResetOrientation(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	expectedResetOrientation := xsens.NewMessage(
+		xsens.MessageIdentifierResetOrientation,
+		xsens.OrientationResetCodeObjectInclinationReset.Marshal(),
+	)
+	mtData2 := []byte{0xfa, 0xff, 0x36, 0x0, 0xcb}
+	resetOrientationAck := xsens.NewMessage(xsens.MessageIdentifierResetOrientationAck, nil)
+
+	port := mockserial.NewMockPort(ctrl)
+	client := xsens.NewClient(port)
+	defer client.Close()
+
+	// the client should send a ResetOrientation message
+	port.EXPECT().Write(expectedResetOrientation)
+
+	// and then ignore messages other than ResetOrientationAck
+	port.EXPECT().
+		Read(gomock.Any()).
+		DoAndReturn(func(b []byte) (int, error) {
+			copy(b, mtData2)
+			return len(mtData2), nil
+		})
+
+	// until it receives a ResetOrientationAck
+	port.EXPECT().
+		Read(gomock.Any()).
+		DoAndReturn(func(b []byte) (int, error) {
+			copy(b, resetOrientationAck)
+			return len(resetOrientationAck), nil
+		})
+
+	// expect client to close
+	port.EXPECT().Close()
+
+	deadline := time.Now().Add(100 * time.Millisecond)
+	ctx, cancel := context.WithDeadline(context.Background(), deadline)
+	defer cancel()
+
+	// when requesting ResetOrientation
+	assert.NilError(t, client.ResetOrientation(ctx, xsens.OrientationResetCodeObjectInclinationReset))
+}
+
 func TestClient_GetOutputConfiguration(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()

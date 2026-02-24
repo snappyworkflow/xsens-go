@@ -94,6 +94,13 @@ func (e *Emulator) Receive(ctx context.Context) error {
 			if err != nil {
 				return fmt.Errorf("receive: %w", err)
 			}
+		case xsens.MessageIdentifierResetOrientation:
+			_, err := e.port.Write(
+				xsens.NewMessage(xsens.MessageIdentifierResetOrientationAck, nil),
+			)
+			if err != nil {
+				return fmt.Errorf("receive: %w", err)
+			}
 		case xsens.MessageIdentifierGotoMeasurement:
 			e.mutex.Lock()
 			e.lastMessageIdentifier = xsens.MessageIdentifierMTData2

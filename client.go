@@ -246,6 +246,24 @@ func (c *Client) GoToMeasurement(ctx context.Context) error {
 	return nil
 }
 
+// ResetOrientation sends the ResetOrientation command with the given code.
+// CODE 0x0000 (Store current settings) is only valid in Config state; other codes
+// perform the reset and are typically used in Measurement state. To store the new
+// orientation, go to Config state and call ResetOrientation again with
+// OrientationResetCodeStoreCurrentSettings. If not stored, the next time Measurement
+// state becomes active the reset results are discarded.
+// See Table 33 (Available orientation resets) in the Xsens MT documentation.
+func (c *Client) ResetOrientation(ctx context.Context, code OrientationResetCode) error {
+	data := code.Marshal()
+	if err := c.send(ctx, NewMessage(MessageIdentifierResetOrientation, data)); err != nil {
+		return fmt.Errorf("xsens client: reset orientation: %w", err)
+	}
+	if err := c.receiveUntil(ctx, MessageIdentifierResetOrientationAck); err != nil {
+		return fmt.Errorf("xsens client: reset orientation: %w", err)
+	}
+	return nil
+}
+
 // MessageIdentifier returns the message identifier of the last received message.
 func (c *Client) MessageIdentifier() MessageIdentifier {
 	return c.message.Identifier()
